@@ -101,7 +101,8 @@ function Enter()
     for(let x=1; x<=i; x++)
     {
         //nur Hilfestellung zum debuggen
-        //alert('x =' + x +'\n operations[x-1]= ' + operations[x-1] + '\n values[x]=' + values[x] + '\n ZwWert =' + ZwWert);
+        /*'alert('x =' + x +'\n operations[x-1]= ' + operations[x-1] + '\
+        \n values[x]=' + values[x] + '\n ZwWert =' + ZwWert);*/
         switch(operations[x-1])
         {
             case 0:
@@ -126,11 +127,7 @@ function Enter()
                 2. Funktionswert: die aktuelle Stelle im Programm (x) */
                 break;
             default:
-                if(operations[x-1]>10&&operations[x-1]<=13){ 
-                    calc_winkelfunktion(x);
-                } else {
-                    alert('default');
-                }
+                alert('default');
                 break;
         }
     }
@@ -151,9 +148,6 @@ function calc_mal_dividiert(x)      //führt die Multiplikation/Division aus
     MalProdukt=values[x-1];         //Das erste Faktor/Dividend
     for(let ii=0; 1; ii++)
     {   
-        /*Falls als nächstes eine Winkelfunktion kommt, abbrechen, 
-        wird in Winkelfunktion berechnet*/
-        if(operations[x+ii]>10) return MalProdukt;
         /*Den Wert im value-Speicher an der Stelle x+ii
         (Stelle um 1 mehr als operations[] in if-condition) multiplizieren*/
         if(operations[(x+ii-1)]==3) MalProdukt *= values[(x+ii)];   
@@ -161,24 +155,6 @@ function calc_mal_dividiert(x)      //führt die Multiplikation/Division aus
         //Wenn nächste Rechnung nicht Mal/Dividiert ist, abbrechen
         if(operations[(x+ii-1)]!=3&&operations[(x+ii-1)]!=4) return MalProdukt;
     }   
-}
-function calc_winkelfunktion(x)     //Zum Berechnen von Winkelfunktionen
-{
-    a=Math.PI * values[x] / 180;    //Umrechnen in Radiant
-    switch(operations[x-1]-10) {
-        //Winkelfunktionen sind mit +10 gespeichert in operations[]
-        case 1: 
-            a=Math.sin(a);
-            break;
-        case 2: 
-            a=Math.cos(a);
-            break;
-        case 3: 
-            a=Math.sin(a) / Math.cos(a);
-            break;
-        default: alert('Error: Winkelfunktion');
-    }
-    ZwWert_anpassen(a,x);
 }
 function ZwWert_anpassen(a,x)   //ändert ZwWert bei Punktrechnungen
 {   //a ist der Wert, der hinzugefügt wird, x die Aktuelle Stelle in Enter()
@@ -198,14 +174,13 @@ function ZwWert_anpassen(a,x)   //ändert ZwWert bei Punktrechnungen
         case 3:
             ZwWert *= a;
             return;
-        case 4: return;
-        case 11: break;
-        case 12: break;
-        case 13: break;
+        case 4: 
+            ZwWert /= a;
+            return;
         default:
             alert('Error: ZwWert_anpassen(): switch');
             return;
-    }   //folgende Befehle nur bei 11,12,13 im Switch
+    }
     
 }
 //Funktionen für spezielle Werte
@@ -291,21 +266,23 @@ function potenzieren(x)     //Potenzieren (nur hoch 2 oder 3)
 }
 function winkelfunktion(x)  //Eingabe von Winkelfunktionen
 {
-    //Falls schon eine Zahl eingegeben ist, multiplizieren
-    if(Eingabewert != 0) multiplizieren();  
     checkErgebnis();
-    math();
-    operations[i]= x + 10;
+    Display_remove_Eingabe();   //Eingabewert vom Display entfernen
+    a = Eingabewert * Math.PI / 180 
+    alert(a);
     //Anzeige
     switch (x){
         case 1:
-            Display('sin ');
+            Display('sin ' + Eingabewert + '° ');
+            Eingabewert = Math.sin(a);
             break;
         case 2:
-            Display('cos ');
+            Display('cos ' + Eingabewert + '° ');
+            Eingabewert = Math.cos(a);
             break;
         case 3:
-            Display('tan ');
+            Display('tan ' + Eingabewert + '° ');
+            Eingabewert = Math.sin(a) / Math.cos(a);
             break;
         default:
             alert('Error: Default winkelfunktion eingabe');
