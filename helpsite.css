@@ -1,0 +1,22 @@
+div {
+    border: 1px dotted black;
+}
+table {
+    border-collapse: collapse;
+    width:498px;
+}
+td {
+    text-align:left;
+    padding: 0px 10px;
+    border-bottom: 1px solid gainsboro;
+    
+}
+tr:hover {
+    background-color: rgba(220, 220, 220, 0.3);
+}
+section {
+    position: relative;
+    width:500px;
+    margin-left: -250px;
+    left:50vw;
+}

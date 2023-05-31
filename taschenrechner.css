@@ -1,0 +1,76 @@
+.TR {
+    border: 2px solid black;
+    border-radius: 5px;
+    width:302px;
+    height:300px;
+    background-color: rgba(78, 78, 78, 0.078);
+    padding:5px 1px;
+    /*Ausrichtung mittig*/
+    margin-left:-151px;
+    margin-top: 10px;
+    position:relative;
+    left:50vw;
+}
+.Bedienfeld{
+    width:100%;
+    height:auto;
+    padding-top:5px;
+}
+.numpad {
+    width:180px;
+    height:auto;
+    text-align:center;
+    float:left;
+}
+.numpad button {
+    width:54px;
+    height:25px;
+    margin:3px 1.5px;
+    float:left;
+    font-size: 15px
+}
+.basic_buttons {
+    float:right;
+    font-size:15px;
+    width:120px;
+    text-align:center;
+}
+.basic_buttons button {
+    width:54px;
+    height:25px;
+    margin:3px 1.5px;
+    float:left;
+    font-size: 15px
+}
+.other_buttons {
+    height:50px;
+}
+.other_buttons div {
+    height:24px;
+}
+.other_buttons div button {
+    width: 40px;
+    height: 20px;
+    font-size:12px;
+}
+.Display {
+    height:50px;
+    width:250px;
+    background-color: rgba(78, 78, 78, 0.313);
+    border-radius: 5px;
+    position: relative;
+    left:25px;
+    padding:1px;
+}
+.Display div {
+    height:25px;
+    width:100%;
+    padding:0px 2px;
+}
+.Display div.Display_calculations a{
+    float:left;
+}
+.Display div.Display_result a{
+    float:right;
+    padding-right: 4px;
+}
