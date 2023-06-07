@@ -268,8 +268,7 @@ function winkelfunktion(x)  //Eingabe von Winkelfunktionen
 {
     checkErgebnis();
     Display_remove_Eingabe();   //Eingabewert vom Display entfernen
-    a = Eingabewert * Math.PI / 180 
-    alert(a);
+    a = Eingabewert * Math.PI / 180;
     //Anzeige
     switch (x){
         case 1:
