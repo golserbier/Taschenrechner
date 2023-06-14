@@ -66,6 +66,7 @@ function Display_remove_Eingabe()   //Entfernt die letzte eingegebene Zahl
     for(ii=0; b>=1; ii++) {
         b /= 10;
     }
+    if(b==0) ii=1;  //falls die Zahl 0 ist
     let length = DisplayValue.length;   //ermittelt Länge des Display-text
     //Die letzte Eingabe entfernen
     DisplayValue=DisplayValue.slice(0, length-ii);
@@ -268,24 +269,47 @@ function winkelfunktion(x)  //Eingabe von Winkelfunktionen
 {
     checkErgebnis();
     Display_remove_Eingabe();   //Eingabewert vom Display entfernen
-    a = Eingabewert * Math.PI / 180;
-    //Anzeige
+        //Anzeige
     switch (x){
         case 1:
             Display('sin ' + Eingabewert + '° ');
-            Eingabewert = Math.sin(a);
+            
             break;
         case 2:
             Display('cos ' + Eingabewert + '° ');
-            Eingabewert = Math.cos(a);
+            
             break;
         case 3:
             Display('tan ' + Eingabewert + '° ');
-            Eingabewert = Math.sin(a) / Math.cos(a);
+            
             break;
         default:
             alert('Error: winkelfunktion()-switch-default');
             break;
+    }
+    while(Eingabewert>=360) {   //Wert auf Bereich zwischen 0 und 360 begrenzen
+        Eingabewert-=360;
+    }
+    a = Eingabewert * Math.PI / 180;    //Wert auf Radiant umrechnen
+    //bei ganzen Werten
+    if(Eingabewert==0 || Eingabewert==90 || Eingabewert==180 ||Eingabewert==270)
+    {
+        if(x==1) {
+            if(Eingabewert==0) Eingabewert=0;
+            if(Eingabewert==90) Eingabewert=1;
+            if(Eingabewert==180) Eingabewert=0;
+            if(Eingabewert==270) Eingabewert=1;
+        }
+        if(x==2) {
+            if(Eingabewert==0) Eingabewert=1;
+            if(Eingabewert==90) Eingabewert=0;
+            if(Eingabewert==180) Eingabewert=1;
+            if(Eingabewert==270) Eingabewert=0;
+        }
+    } else {    //bei anderen Werten
+        if(x==1) Eingabewert = Math.sin(a);
+        if(x==2) Eingabewert = Math.sin(a);
+        if(x==3) Eingabewert = Math.sin(a) / Math.cos(a);
     }
 }
 function wurzel()           //Eingabe und berechnen von Wurzeln
