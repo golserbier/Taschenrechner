@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style_main.css">
     <link rel="stylesheet" href="taschenrechner.css">
-    <script src="javascript_TR.js"></script>
+    <script src="script_komplizierteOperationenNEU.js"></script>
   </head>
   <body onkeydown="tastatur_eingabe()"> <!-- Funktion, um kein Feld für 
     Tastatureingabe zu benötigen, sondern auf der ganzen Seite möglich-->
@@ -27,18 +27,18 @@
     <div class="Bedienfeld">
       <div class="other_buttons">
         <div class="row">   <!--Winkelfunktionen-->
-          <button onclick="winkelfunktion(1)">sin</button>
-          <button onclick="winkelfunktion(2)">cos</button>
-          <button onclick="winkelfunktion(3)">tan</button>
+          <button onclick="kompOp(4)">sin</button>
+          <button onclick="kompOp(5)">cos</button>
+          <button onclick="kompOp(6)">tan</button>
           <button onclick="enter_e()">e</button>
-          <button onclick="Ln()">ln</button>
+          <button onclick="kompOp(1)">ln</button>
         </div>
         <div class="row">
           <button onclick="potenzieren(2)">x²</button>
           <button onclick="potenzieren(3)">x³</button>
           <button onclick="potenzieren('x')">^</button>
-          <button onclick="wurzel()">√</button>
-          <button onclick="log()">log<sub>10</sub></button>
+          <button onclick="kompOp(3)">√</button>
+          <button onclick="kompOp(2)">log<sub>10</sub></button>
         </div>
       </div>
       <div class="numpad">  <!--Zum Zahlen, Komma, Pi eingeben-->
@@ -67,6 +67,7 @@
       </div>
     </div>
   </div>
+  <button onclick="kompOpEnter()">Enter</button>
   <footer>
     <a>Projekt von Tim Kummer für den Informatik-Unterricht</a>
   </footer>
